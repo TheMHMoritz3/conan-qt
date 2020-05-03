@@ -9,7 +9,6 @@
 
 # - IMPORTANT NOTICE: These configurations are actually not completely working as expected yet due to GHA limitations
 # but it is important to set this values already so they can be consumed later
-
 # You can furthermore set any environment variable understood by Conan and Conan Package Tools
 
 on: [push, pull_request]
