@@ -1,10 +1,27 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.1.0)
 project(test_package)
+
+include(${CMAKE_BINARY_DIR}/../conanbuildinfo.cmake)
+conan_set_vs_runtime()
+conan_set_libcxx()
+conan_output_dirs_setup()
 
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+# Find includes in corresponding build directories
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+# Instruct CMake to run moc automatically when needed
+set(CMAKE_AUTOMOC ON)
+# Create code from a list of Qt designer ui files
+set(CMAKE_AUTOUIC ON)
 
-add_executable(${PROJECT_NAME} test_package.cpp)
-target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
+# Find the QtCore library
+find_package(Qt5Core CONFIG REQUIRED)
+
+add_executable(${PROJECT_NAME} test_package.cpp greeter.h)
+target_link_libraries(${PROJECT_NAME} Qt5::Core)
+
+# configure_file(${CMAKE_CURRENT_BINARY_DIR}/qt.conf ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/qt.conf COPYONLY)
+
+message(">>>>>>>> CMAKE_VERSION ${CMAKE_VERSION}")
+message(">>>>>>>> CMAKE_CXX_STANDARD_LIBRARIES ${CMAKE_CXX_STANDARD_LIBRARIES}")
