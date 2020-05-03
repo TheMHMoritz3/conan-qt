@@ -359,7 +359,11 @@ class QtConan(ConanFile):
                 installer.install(item)
 
     def source(self):
-        tools.get(**self.conan_data["sources"][self.version])
+        if self.settings.os=="Windows":
+            tools.get(**self.conan_data["sources-windows"][self.version])
+        else:
+            tools.get(**self.conan_data["sources"][self.version])
+
         shutil.move("qt-everywhere-src-%s" % self.version, "qt5")
 
         for p in self.conan_data["patches"][self.version]:
