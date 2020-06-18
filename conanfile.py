@@ -126,7 +126,7 @@ class QtConan(ConanFile):
         "libxcb:shared": True,
     }, **{module: False for module in _submodules if module != 'qtbase'}
     )
-    requires = "zlib/1.2.11", "7zip/19.00"
+    requires = "zlib/1.2.11"
     short_paths = True
 
     _xcb_packages = {
@@ -283,7 +283,7 @@ class QtConan(ConanFile):
 
     def requirements(self):
         if self.options.openssl:
-            self.requires("openssl/1.1.1d")
+            self.requires("openssl/1.1.1g")
         if self.options.with_pcre2:
             self.requires("pcre2/10.33")
 
