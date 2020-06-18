@@ -126,7 +126,7 @@ class QtConan(ConanFile):
         "libxcb:shared": True,
     }, **{module: False for module in _submodules if module != 'qtbase'}
     )
-    requires = "zlib/1.2.11"
+    requires = "zlib/1.2.11", "7zip/19.00"
     short_paths = True
 
     _xcb_packages = {
