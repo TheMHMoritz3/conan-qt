@@ -107,7 +107,7 @@ class QtConan(ConanFile):
         "with_libpng": True,
         "with_sqlite3": True,
         "with_mysql": True,
-        "with_pq": True,
+        "with_pq": False,
         "with_odbc": True,
         "with_sdl2": True,
         "with_libalsa": False,
