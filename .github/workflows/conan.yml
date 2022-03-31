@@ -106,4 +106,5 @@ jobs:
           CONAN_USERNAME: "themhmoritz3"
         run: |
           export CONAN_${{ matrix.compiler.name }}_VERSIONS="${{ matrix.compiler.version }}"
+          conan remote add conan-center https://center.conan.io
           python build.py
