@@ -99,12 +99,12 @@ jobs:
       - name: Run
         env:
           CONAN_USE_DOCKER: 1
-          CONAN_LOGIN_USERNAME: ${{ secrets.CONAN_LOGIN_USERNAME }}
-          CONAN_PASSWORD: ${{ secrets.CONAN_PASSWORD }}
-          CONAN_BUILD_TYPES: ${{ matrix.compiler.buildType }}
-          CONAN_UPLOAD: ${{ secrets.CONAN_UPLOAD }}
-          CONAN_USERNAME: "themhmoritz3"
+          #CONAN_LOGIN_USERNAME: ${{ secrets.CONAN_LOGIN_USERNAME }}
+          #CONAN_PASSWORD: ${{ secrets.CONAN_PASSWORD }}
+          #CONAN_BUILD_TYPES: ${{ matrix.compiler.buildType }}
+          #CONAN_UPLOAD: ${{ secrets.CONAN_UPLOAD }}
         run: |
-          export CONAN_${{ matrix.compiler.name }}_VERSIONS="${{ matrix.compiler.version }}"
+          conan remote add upload_repo ${{ secrets.CONAN_UPLOAD }}
           conan user ${{ secrets.CONAN_LOGIN_USERNAME }} -r upload_repo -p ${{ secrets.CONAN_PASSWORD }}
+          export CONAN_${{ matrix.compiler.name }}_VERSIONS="${{ matrix.compiler.version }}"
           python build.py
