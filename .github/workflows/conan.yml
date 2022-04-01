@@ -105,8 +105,5 @@ jobs:
           #CONAN_UPLOAD: ${{ secrets.CONAN_UPLOAD }}
         run: |
           export CONAN_${{ matrix.compiler.name }}_VERSIONS="${{ matrix.compiler.version }}"
-          conan remote remove upload_repo
+          conan download -r conancenter
           python build.py
-          conan remote add upload ${{ secrets.CONAN_UPLOAD }}
-          conan user ${{ secrets.CONAN_LOGIN_USERNAME }} -r upload -p ${{ secrets.CONAN_PASSWORD }}
-          conan upload qt/5.14.1@* --all -r=upload
