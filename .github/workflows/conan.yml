@@ -106,5 +106,5 @@ jobs:
           CONAN_USERNAME: "themhmoritz3"
         run: |
           export CONAN_${{ matrix.compiler.name }}_VERSIONS="${{ matrix.compiler.version }}"
-          conan user ${{ secrets.CONAN_LOGIN_USERNAME }} -r ${{ secrets.CONAN_UPLOAD }} -p ${{ secrets.CONAN_PASSWORD }}
+          conan user ${{ secrets.CONAN_LOGIN_USERNAME }} -r upload_repo -p ${{ secrets.CONAN_PASSWORD }}
           python build.py
