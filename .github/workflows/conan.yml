@@ -106,4 +106,5 @@ jobs:
           CONAN_USERNAME: "themhmoritz3"
         run: |
           export CONAN_${{ matrix.compiler.name }}_VERSIONS="${{ matrix.compiler.version }}"
+          conan user
           python build.py
